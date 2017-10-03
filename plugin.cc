@@ -62,7 +62,13 @@ void Plugin::SetCommandClient(int index) {}
 
 void Plugin::ClientSettingsChanged(edict_t* pEdict){}
 
-PLUGIN_RESULT Plugin::ClientCommand(edict_t* pEntity, const CCommand &args) {
+PLUGIN_RESULT Plugin::ClientCommand(edict_t* pEntity, const CCommand& args) {
+  if (strcmp(args[0], "buy") == 0) {
+    if (strcmp(args[1], "awp") == 0) {
+      return PLUGIN_STOP;
+    }
+  }
+
   return PLUGIN_CONTINUE;
 }
 
