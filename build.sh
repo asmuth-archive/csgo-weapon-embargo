@@ -10,14 +10,15 @@ SOURCES=plugin.cc
 # checkout hl2sdk
 HL2SDK_GIT="https://github.com/alliedmodders/hl2sdk"
 if [[ ! -d "${WORKDIR}/hl2sdk/.git" ]]; then
-  git clone "${HL2SDK_GIT}" "${WORKDIR}/hl2sdk"
+  git clone "${HL2SDK_GIT}" "${WORKDIR}/hl2sdk" -b csgo
 fi
 
 # build plugin object
-${CC} -c \
+${CC} \
     -D_LINUX \
     -DPOSIX \
     -DGNUC \
+    -DCOMPILER_GCC \
     -Wall \
     -Werror \
     -O3 \
@@ -50,5 +51,10 @@ ${CC} -c \
     -I"${WORKDIR}/hl2sdk/public/engine/protobuf" \
     -I"${WORKDIR}/hl2sdk/common/protobuf-2.5.0/src" \
     ${SOURCES} \
-    -o "${SONAME}.o"
+    -lm \
+    -ldl \
+    -lstdc++ \
+    -shared \
+    -static-libgcc \
+    -o "${WORKDIR}/${SONAME}.so"
 

@@ -9,6 +9,10 @@ const char* Plugin::GetPluginDescription() {
 bool Plugin::Load(
     CreateInterfaceFn interfaceFactory,
     CreateInterfaceFn gameServerFactory) {
+  Msg(
+      "!!!!!!!!!!!!!!!!!!!!!!!!!! LOADING PLUGIN: %s !!!!!!!!!!!!!!!!!!!!!!!!!!\n",
+      kPluginDescription);
+
   return true;
 }
 
