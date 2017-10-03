@@ -4,6 +4,8 @@
 
 static const char kPluginDescription[] = "CS:GO Weapon Restrict Plugin";
 
+static IVEngineServer* engine = nullptr;
+
 const char* Plugin::GetPluginDescription() {
   return kPluginDescription;
 }
@@ -12,6 +14,15 @@ bool Plugin::Load(
     CreateInterfaceFn interfaceFactory,
     CreateInterfaceFn gameServerFactory) {
   Msg("Loading Plugin: %s\n", kPluginDescription);
+
+  engine = static_cast<IVEngineServer*>(
+      interfaceFactory(INTERFACEVERSION_VENGINESERVER, NULL));
+
+  if(!engine) {
+    Msg("ERROR: Can't load engine");
+    return false;
+  }
+
   return true;
 }
 
@@ -63,8 +74,11 @@ void Plugin::SetCommandClient(int index) {}
 void Plugin::ClientSettingsChanged(edict_t* pEdict){}
 
 PLUGIN_RESULT Plugin::ClientCommand(edict_t* pEntity, const CCommand& args) {
+  // prevent user from buying forbidden weapons
   if (strcmp(args[0], "buy") == 0) {
     if (strcmp(args[1], "awp") == 0) {
+      engine->ClientCommand(pEntity, "buy bizon");
+      engine->ClientCommand(pEntity, "buy elite");
       return PLUGIN_STOP;
     }
   }
