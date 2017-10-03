@@ -2,7 +2,7 @@
 #include "hl2sdk/public/eiface.h"
 #include "hl2sdk/public/server_class.h"
 
-static const char kPluginDescription[] = "CS:GO Weapon Restrict Plugin";
+static const char kPluginDescription[] = "Da 1337 w3p0n dis4bler by tr0nald dump & f1nncr1me";
 
 static IVEngineServer* engine = nullptr;
 
