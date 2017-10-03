@@ -25,4 +25,12 @@ fi
 
 # install plugin
 mkdir -p "${CSGODIR}/csgo/addons"
+
+(cat > "${CSGODIR}/csgo/addons/${SONAME}.vdf") <<EOF
+"Plugin"
+{
+	"file"	"addons/${SONAME}.so"
+}
+EOF
+
 cp "${WORKDIR}/${SONAME}.so" "${CSGODIR}/csgo/addons"
