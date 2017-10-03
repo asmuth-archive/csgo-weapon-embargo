@@ -55,6 +55,8 @@ void Plugin::ClientFullyConnect(edict_t* pEntity) {}
 
 void Plugin::ClientPutInServer(edict_t* entity, const char* playername) {}
 
+void Plugin::ClientActive(edict_t *pEntity) {}
+
 void Plugin::ClientDisconnect(edict_t* pEntity) {}
 
 void Plugin::SetCommandClient(int index) {}
@@ -69,5 +71,24 @@ PLUGIN_RESULT Plugin::NetworkIDValidated(
     const char* pszUserName,
     const char* pszNetworkID) {
   return PLUGIN_CONTINUE;
+}
+
+bool Plugin::BNetworkCryptKeyCheckRequired(
+    uint32 unFromIP,
+    uint16 usFromPort,
+    uint32 unAccountIdProvidedByClient,
+    bool bClientWantsToUseCryptKey) {
+  return false;
+}
+
+bool Plugin::BNetworkCryptKeyValidate(
+    uint32 unFromIP,
+    uint16 usFromPort,
+    uint32 unAccountIdProvidedByClient,
+    int nEncryptionKeyIndexFromClient,
+    int numEncryptedBytesFromClient,
+    byte* pbEncryptedBufferFromClient,
+    byte* pbPlainTextKeyForNetchan) {
+  return false;
 }
 

@@ -76,8 +76,8 @@ public:
       uint32 unAccountIdProvidedByClient,
       int nEncryptionKeyIndexFromClient,
       int numEncryptedBytesFromClient,
-      byte *pbEncryptedBufferFromClient,
-      byte *pbPlainTextKeyForNetchan) override;
+      byte* pbEncryptedBufferFromClient,
+      byte* pbPlainTextKeyForNetchan) override;
 
 };
 
