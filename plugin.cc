@@ -1,4 +1,6 @@
 #include "plugin.h"
+#include "hl2sdk/public/eiface.h"
+#include "hl2sdk/public/server_class.h"
 
 static const char kPluginDescription[] = "CS:GO Weapon Restrict Plugin";
 
@@ -9,10 +11,7 @@ const char* Plugin::GetPluginDescription() {
 bool Plugin::Load(
     CreateInterfaceFn interfaceFactory,
     CreateInterfaceFn gameServerFactory) {
-  Msg(
-      "!!!!!!!!!!!!!!!!!!!!!!!!!! LOADING PLUGIN: %s !!!!!!!!!!!!!!!!!!!!!!!!!!\n",
-      kPluginDescription);
-
+  Msg("Loading Plugin: %s\n", kPluginDescription);
   return true;
 }
 
@@ -55,7 +54,7 @@ void Plugin::ClientFullyConnect(edict_t* pEntity) {}
 
 void Plugin::ClientPutInServer(edict_t* entity, const char* playername) {}
 
-void Plugin::ClientActive(edict_t *pEntity) {}
+void Plugin::ClientActive(edict_t* pEntity) {}
 
 void Plugin::ClientDisconnect(edict_t* pEntity) {}
 

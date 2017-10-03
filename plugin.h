@@ -4,7 +4,7 @@
 class Plugin : public IServerPluginCallbacks {
 public:
 
-  const char *GetPluginDescription() override;
+  const char* GetPluginDescription() override;
 
   bool Load(
       CreateInterfaceFn interfaceFactory,
@@ -16,10 +16,10 @@ public:
 
   void UnPause() override;
 
-  void LevelInit(char const *pMapName) override;
+  void LevelInit(char const* pMapName) override;
 
   void ServerActivate(
-      edict_t *pEdictList,
+      edict_t* pEdictList,
       int edictCount,
       int clientMax) override;
 
@@ -29,40 +29,40 @@ public:
 
   void OnQueryCvarValueFinished(
       QueryCvarCookie_t iCookie,
-      edict_t *pPlayerEntity,
+      edict_t* pPlayerEntity,
       EQueryCvarValueStatus eStatus,
-      const char *pCvarName,
-      const char *pCvarValue) override;
+      const char* pCvarName,
+      const char* pCvarValue) override;
 
-  void OnEdictAllocated(edict_t *edict) override;
+  void OnEdictAllocated(edict_t* edict) override;
 
-  void OnEdictFreed(const edict_t *edict) override;
+  void OnEdictFreed(const edict_t* edict) override;
 
   PLUGIN_RESULT ClientConnect(
-      bool *bAllowConnect,
-      edict_t *pEntity,
-      const char *pszName,
-      const char *pszAddress,
-      char *reject,
+      bool* bAllowConnect,
+      edict_t* pEntity,
+      const char* pszName,
+      const char* pszAddress,
+      char* reject,
       int maxrejectlen) override;
 
-  void ClientFullyConnect(edict_t *pEntity);
+  void ClientFullyConnect(edict_t* pEntity);
 
-  void ClientPutInServer(edict_t *entity, const char *playername) override;
+  void ClientPutInServer(edict_t* entity, const char* playername) override;
 
-  void ClientActive(edict_t *pEntity) override;
+  void ClientActive(edict_t* pEntity) override;
 
-  void ClientDisconnect(edict_t *pEntity) override;
+  void ClientDisconnect(edict_t* pEntity) override;
 
   void SetCommandClient(int index) override;
 
-  void ClientSettingsChanged(edict_t *pEdict) override;
+  void ClientSettingsChanged(edict_t* pEdict) override;
 
-  PLUGIN_RESULT ClientCommand(edict_t *pEntity, const CCommand &args) override;
+  PLUGIN_RESULT ClientCommand(edict_t* pEntity, const CCommand& args) override;
 
   PLUGIN_RESULT NetworkIDValidated(
-      const char *pszUserName,
-      const char *pszNetworkID) override;
+      const char* pszUserName,
+      const char* pszNetworkID) override;
 
   bool BNetworkCryptKeyCheckRequired(
       uint32 unFromIP,

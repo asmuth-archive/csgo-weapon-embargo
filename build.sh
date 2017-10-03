@@ -62,6 +62,7 @@ ${CC} \
     -I"${WORKDIR}/hl2sdk/public/game/shared" \
     -I"${WORKDIR}/hl2sdk/public/game/shared/csgo/protobuf" \
     -I"${WORKDIR}/hl2sdk/public/engine/protobuf" \
+    -I"${WORKDIR}/hl2sdk/game/shared" \
     -I"${WORKDIR}/hl2sdk/common/protobuf-2.5.0/src" \
     ${SOURCES} \
     -lm \
