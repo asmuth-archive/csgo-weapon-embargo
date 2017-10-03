@@ -3,6 +3,7 @@
 #include "hl2sdk/public/server_class.h"
 
 static const char kPluginDescription[] = "Da 1337 w3p0n dis4bler by tr0nald dump & f1nncr1me";
+static const bool kPluginIsProfi = true;
 
 static IVEngineServer* engine = nullptr;
 
@@ -76,7 +77,9 @@ void Plugin::ClientSettingsChanged(edict_t* pEdict){}
 PLUGIN_RESULT Plugin::ClientCommand(edict_t* pEntity, const CCommand& args) {
   // prevent user from buying forbidden weapons
   if (strcmp(args[0], "buy") == 0) {
-    if (strcmp(args[1], "awp") == 0) {
+    if (strcmp(args[1], "awp") == 0 ||
+        strcmp(args[1], "scar20") == 0 ||
+        strcmp(args[1], "g3sg1") == 0) {
       engine->ClientCommand(pEntity, "buy bizon");
       engine->ClientCommand(pEntity, "buy elite");
       return PLUGIN_STOP;
